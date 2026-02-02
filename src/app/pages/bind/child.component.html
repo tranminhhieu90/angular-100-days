@@ -1,0 +1,14 @@
+<!-- <div class="child-container">
+  <h3>Child Component</h3>
+  <input [value]="value" (input)="onChange($event.target.value)" placeholder="Nhập dữ liệu" />
+  <p>
+    Giá trị hiện tại: <strong>{{ value }}</strong>
+  </p>
+</div> -->
+<div class="child-container">
+  <h3>Child Component (Signal)</h3>
+  <input [value]="value()" (input)="onChange($event.target.value)" placeholder="Nhập dữ liệu" />
+  <p>
+    Giá trị: <strong>{{ value() }}</strong>
+  </p>
+</div>

@@ -1,0 +1,27 @@
+<header class="header">
+  <div class="container">
+    <div class="logo">
+      <a routerLink="/home">🚀 Angular 100 Days</a>
+    </div>
+
+    <nav class="nav">
+      <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+        >Home</a
+      >
+      <a routerLink="/about" routerLinkActive="active">About</a>
+      <a routerLink="/users" routerLinkActive="active">Users</a>
+    </nav>
+
+    <div class="auth-section">
+      @if (authService.currentUser(); as user) {
+        <div class="user-info">
+          <span class="username">👤 {{ user.username }}</span>
+          <span class="role-badge">{{ user.role }}</span>
+          <button (click)="logout()" class="btn-logout">Đăng xuất</button>
+        </div>
+      } @else {
+        <a routerLink="/login" class="btn-login">Đăng nhập</a>
+      }
+    </div>
+  </div>
+</header>

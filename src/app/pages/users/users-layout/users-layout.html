@@ -1,0 +1,15 @@
+<div class="users-layout">
+  <aside class="sidebar">
+    <h2>Users Management</h2>
+    <nav>
+      <a routerLink="/users" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        📋 Danh sách Users
+      </a>
+      <a routerLink="/users/create" routerLinkActive="active"> ➕ Thêm mới User </a>
+      <a routerLink="/users/statistics" routerLinkActive="active"> 📊 Thống kê </a>
+    </nav>
+  </aside>
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

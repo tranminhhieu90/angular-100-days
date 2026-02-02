@@ -1,0 +1,22 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+
+@Component({
+  selector: 'app-header',
+  imports: [RouterLink, RouterLinkActive],
+  templateUrl: './header.html',
+  styleUrl: './header.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class HeaderComponent {
+  constructor(
+    public authService: AuthService,
+    private router: Router,
+  ) {}
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
+}

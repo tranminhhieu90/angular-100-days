@@ -1,0 +1,44 @@
+<div class="parent-container">
+  <!-- <h2>Parent Component</h2>
+
+  <div class="parent-section">
+    <h4>Dữ liệu ở Parent:</h4>
+    <p>
+      parentValue = <strong>{{ parentValue }}</strong>
+    </p>
+
+    <button (click)="updateValue()" class="btn">Cập nhật giá trị từ Parent</button>
+  </div>
+
+  <hr /> -->
+
+  <!-- Cách 1: Dùng 2-way binding [(value)] -->
+  <!-- <div class="binding-section">
+    <h4>Cách 1: Two-way Binding [(value)]</h4>
+    <p>Dữ liệu đồng bộ 2 chiều tự động</p>
+    <app-child [(value)]="parentValue"></app-child>
+  </div>
+
+  <hr /> -->
+  <!-- Cách 2: Dùng [value] và (valueChange) riêng rẽ -->
+  <!-- <div class="binding-section">
+    <h4>Cách 2: Property Binding + Event Binding</h4>
+    <p>Điều khiển chi tiết hơn</p>
+    <app-child [value]="parentValue" (valueChange)="onChildValueChange($event)"></app-child>
+  </div>
+</div> -->
+
+  <!-- --- -->
+  <div class="parent-container">
+    <h2>Parent Component (Signal)</h2>
+
+    <p>
+      parentValue = <strong>{{ parentValue() }}</strong>
+    </p>
+
+    <button (click)="updateValue()">Cập nhật từ Parent</button>
+
+    <!-- 2-way binding với signal -->
+    <app-child [value]="parentValue()" (valueChange)="onChildChange($event)"></app-child>
+  </div>
+</div>

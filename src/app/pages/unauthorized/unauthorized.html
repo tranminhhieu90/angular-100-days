@@ -1,0 +1,23 @@
+<div class="unauthorized-container">
+  <div class="error-card">
+    <div class="error-icon">🚫</div>
+    <h1>Không có quyền truy cập</h1>
+    <p class="message">
+      Bạn không có quyền truy cập trang này. Vui lòng liên hệ quản trị viên để được cấp quyền.
+    </p>
+
+    @if (authService.currentUser(); as user) {
+      <div class="user-info">
+        <p><strong>Người dùng hiện tại:</strong> {{ user.username }}</p>
+        <p>
+          <strong>Vai trò:</strong> <span class="badge">{{ user.role }}</span>
+        </p>
+      </div>
+    }
+
+    <div class="actions">
+      <a routerLink="/home" class="btn btn-primary">← Về trang chủ</a>
+      <a routerLink="/login" class="btn btn-secondary">Đăng nhập lại</a>
+    </div>
+  </div>
+</div>

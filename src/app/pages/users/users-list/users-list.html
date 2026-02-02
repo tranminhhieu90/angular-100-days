@@ -1,0 +1,33 @@
+<div class="users-list-container">
+  <h1>Danh sách Users</h1>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Tên</th>
+          <th>Email</th>
+          <th>Vai trò</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (user of users(); track user.id) {
+          <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+              <span class="badge">{{ user.role }}</span>
+            </td>
+            <td class="actions">
+              <a [routerLink]="['/users', user.id]" class="btn btn-view">Xem</a>
+              <a [routerLink]="['/users', user.id, 'edit']" class="btn btn-edit">Sửa</a>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

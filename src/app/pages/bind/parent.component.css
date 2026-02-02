@@ -1,0 +1,39 @@
+.parent-container {
+  border: 2px solid green;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+}
+
+.parent-section {
+  background-color: white;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.binding-section {
+  background-color: white;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 15px 0;
+}
+
+.btn {
+  padding: 10px 15px;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn:hover {
+  background-color: darkgreen;
+}
+
+hr {
+  margin: 20px 0;
+}
