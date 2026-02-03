@@ -4,11 +4,14 @@ import {
   provideZonelessChangeDetection,
 } from '@angular/core';
 import { provideRouter, withPreloading, PreloadAllModules } from '@angular/router';
-
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideEventPlugins } from '@taiga-ui/event-plugins';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideAnimations(),
+    provideEventPlugins(),
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideRouter(routes, withPreloading(PreloadAllModules)),

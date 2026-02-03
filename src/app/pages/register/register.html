@@ -1,0 +1,54 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="register-form">
+  <tui-textfield>
+    <label tuiLabel>Name</label>
+    <input formControlName="name" placeholder="Name" tuiTextfield />
+    <tui-icon tuiTooltip="Enter your full name" />
+  </tui-textfield>
+  <tui-error formControlName="name" [error]="[] | tuiFieldError | async" />
+
+  <tui-textfield>
+    <label tuiLabel>Age</label>
+    <input formControlName="age" type="number" placeholder="Age" tuiTextfield />
+    <tui-icon tuiTooltip="Enter your age" />
+  </tui-textfield>
+  <tui-textfield tuiChevron [tuiTextfieldCleaner]="false">
+    <label tuiLabel>Role</label>
+    <input placeholder="Choose your role" tuiSelect formControlName="role" />
+    <tui-data-list-wrapper *tuiTextfieldDropdown new [items]="roles" />
+  </tui-textfield>
+  <tui-error formControlName="role" [error]="[] | tuiFieldError | async" />
+  <tui-textfield>
+    <label tuiLabel>Email</label>
+    <input formControlName="email" type="email" placeholder="Email" tuiTextfield />
+    <tui-icon tuiTooltip="Enter your email address" />
+  </tui-textfield>
+  <tui-error formControlName="email" [error]="[] | tuiFieldError | async" />
+
+  <tui-textfield>
+    <label tuiLabel>Password</label>
+    <input formControlName="password" type="password" placeholder="Password" tuiTextfield />
+    <tui-icon tuiPassword />
+  </tui-textfield>
+  <tui-error formControlName="password" [error]="[] | tuiFieldError | async" />
+
+  <tui-textfield>
+    <label tuiLabel>Confirm Password</label>
+    <input
+      formControlName="confirmPassword"
+      type="password"
+      placeholder="Confirm Password"
+      tuiTextfield
+    />
+    <tui-icon tuiTooltip="Re-enter your password" />
+  </tui-textfield>
+  <tui-error formControlName="confirmPassword" [error]="[] | tuiFieldError | async" />
+
+  <div
+    *ngIf="form.hasError('passwordMismatch') && form.get('confirmPassword')?.touched"
+    class="error-message"
+  >
+    Passwords do not match
+  </div>
+
+  <button tuiButton type="submit" appearance="primary" [disabled]="form.invalid">Register</button>
+</form>
