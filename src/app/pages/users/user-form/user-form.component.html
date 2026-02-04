@@ -1,0 +1,127 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h2>{{ isEdit ? 'Cập nhật người dùng' : 'Tạo người dùng mới' }}</h2>
+
+      <!-- Loading indicator -->
+      <div *ngIf="loading" class="spinner-border mb-3" role="status">
+        <span class="visually-hidden">Đang tải...</span>
+      </div>
+
+      <!-- Form -->
+      <form [formGroup]="userForm" (ngSubmit)="saveUser()" *ngIf="!loading">
+        <!-- Name field -->
+        <div class="mb-3">
+          <label for="name" class="form-label">Tên <span class="text-danger">*</span></label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            formControlName="name"
+            [class.is-invalid]="name?.invalid && name?.touched"
+            placeholder="Nhập tên người dùng"
+          />
+
+          <div class="invalid-feedback" *ngIf="name?.invalid && name?.touched">
+            <div *ngIf="name?.errors?.['required']">Tên là bắt buộc</div>
+            <div *ngIf="name?.errors?.['minlength']">Tên phải có ít nhất 3 ký tự</div>
+          </div>
+        </div>
+
+        <!-- Email field -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            formControlName="email"
+            [class.is-invalid]="email?.invalid && email?.touched"
+            placeholder="Nhập email"
+          />
+
+          <div class="invalid-feedback" *ngIf="email?.invalid && email?.touched">
+            <div *ngIf="email?.errors?.['required']">Email là bắt buộc</div>
+            <div *ngIf="email?.errors?.['email']">Email không hợp lệ</div>
+          </div>
+        </div>
+
+        <!-- Password field -->
+        <div class="mb-3">
+          <label for="password" class="form-label">
+            Mật khẩu
+            <span class="text-danger" *ngIf="!isEdit">*</span>
+            <span class="text-muted" *ngIf="isEdit">(để trống nếu không đổi)</span>
+          </label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            formControlName="password"
+            [class.is-invalid]="password?.invalid && password?.touched"
+            placeholder="Nhập mật khẩu"
+          />
+
+          <div class="invalid-feedback" *ngIf="password?.invalid && password?.touched">
+            <div *ngIf="password?.errors?.['required']">Mật khẩu là bắt buộc</div>
+            <div *ngIf="password?.errors?.['minlength']">Mật khẩu phải có ít nhất 6 ký tự</div>
+          </div>
+        </div>
+
+        <!-- Role field -->
+        <div class="mb-3">
+          <label for="role" class="form-label">Vai trò <span class="text-danger">*</span></label>
+          <select
+            class="form-select"
+            id="role"
+            formControlName="role"
+            [class.is-invalid]="role?.invalid && role?.touched"
+          >
+            <option value="">-- Chọn vai trò --</option>
+            <option *ngFor="let r of roles" [value]="r">
+              {{ r | uppercase }}
+            </option>
+          </select>
+
+          <div class="invalid-feedback" *ngIf="role?.invalid && role?.touched">
+            <div *ngIf="role?.errors?.['required']">Vai trò là bắt buộc</div>
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="mb-3">
+          <button
+            type="submit"
+            class="btn btn-primary me-2"
+            [disabled]="submitting || userForm.invalid"
+          >
+            <span *ngIf="!submitting">
+              {{ isEdit ? 'Cập nhật' : 'Tạo mới' }}
+            </span>
+            <span *ngIf="submitting">
+              <span
+                class="spinner-border spinner-border-sm me-2"
+                role="status"
+                aria-hidden="true"
+              ></span>
+              Đang xử lý...
+            </span>
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="cancel()"
+            [disabled]="submitting"
+          >
+            Hủy
+          </button>
+        </div>
+
+        <!-- Form status info -->
+        <div *ngIf="userForm.touched && userForm.invalid" class="alert alert-warning" role="alert">
+          Vui lòng điền đầy đủ các trường bắt buộc
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="container">
+  <h2>Danh sách người dùng</h2>
+
+  <button class="btn btn-primary" routerLink="/users/create">Thêm mới</button>
+
+  <div *ngIf="loading" class="spinner">Đang tải...</div>
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <table class="table" *ngIf="!loading">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tên</th>
+        <th>Email</th>
+        <th>Vai trò</th>
+        <th>Hành động</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.role }}</td>
+        <td>
+          <button class="btn btn-sm btn-info" [routerLink]="['/users', user.id]">Sửa</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteUser(user.id)">Xóa</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
