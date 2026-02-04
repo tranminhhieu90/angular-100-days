@@ -36,4 +36,26 @@ export class BaseService {
   patch<T>(endpoint: string, data: any): Observable<T> {
     return this.http.patch<T>(`${this.apiUrl}/${endpoint}`, data);
   }
+
+  // Upload file với FormData
+  upload<T>(endpoint: string, formData: FormData): Observable<T> {
+    return this.http.post<T>(`${this.apiUrl}/${endpoint}`, formData);
+  }
+
+  // Upload file với progress tracking
+  uploadWithProgress<T>(endpoint: string, formData: FormData): Observable<any> {
+    return this.http.post<T>(`${this.apiUrl}/${endpoint}`, formData, {
+      reportProgress: true,
+      observe: 'events',
+    });
+  }
+
+  // Upload multiple files
+  uploadMultiple<T>(endpoint: string, files: File[], fieldName: string = 'files'): Observable<T> {
+    const formData = new FormData();
+    files.forEach((file, index) => {
+      formData.append(`${fieldName}[${index}]`, file, file.name);
+    });
+    return this.http.post<T>(`${this.apiUrl}/${endpoint}`, formData);
+  }
 }

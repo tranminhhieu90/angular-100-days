@@ -34,6 +34,11 @@ export const routes: Routes = [
     path: 'taiga-demo',
     loadComponent: () => import('./pages/taiga-demo/taiga-demo').then((m) => m.TaigaDemoComponent),
   },
+  {
+    path: 'upload',
+    loadComponent: () =>
+      import('./pages/upload/upload-demo.component').then((m) => m.UploadDemoComponent),
+  },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: '**',
