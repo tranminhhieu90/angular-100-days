@@ -1,7 +1,7 @@
 import { Component, signal, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpEventType } from '@angular/common/http';
-import { UploadService, UploadResponse } from '../../services/upload.service';
+import { UploadService, UploadResponse } from '@app/services/upload.service';
 
 interface UploadedFile {
   file: File;

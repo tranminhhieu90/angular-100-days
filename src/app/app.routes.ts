@@ -28,7 +28,7 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/users/users-layout/users-layout').then((m) => m.UsersLayoutComponent),
     loadChildren: () => import('./pages/users/users.routes').then((m) => m.USERS_ROUTES),
-    canActivate: [roleGuard('admin')],
+    // canActivate: [roleGuard('admin')],
   },
   {
     path: 'taiga-demo',

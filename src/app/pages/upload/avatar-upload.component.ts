@@ -1,6 +1,6 @@
 import { Component, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UploadService, UploadResponse } from '../../services/upload.service';
+import { UploadService, UploadResponse } from '@app/services/upload.service';
 
 @Component({
   selector: 'app-avatar-upload',
